@@ -1,0 +1,81 @@
+//Coder:Octavio Gutierrez
+package com.example.addressbook;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TableRow;
+import android.widget.Toast;
+
+public class Address_Book extends Activity {
+
+	Button ok;
+	Button clear;
+	EditText fname = null;
+	EditText address = null;
+	EditText city = null;
+	EditText state = null;
+	EditText zip = null;
+	
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        
+        ok = (Button) findViewById(R.id.okbutton);
+        
+        ok.setOnClickListener(new OnClickListener(){
+			public void onClick(View arg0) {
+				setInput();
+				Toast.makeText(getBaseContext(), "You entered: " + fname.getText() + " ," + address.getText() + " ," +  city.getText() + " ," + state.getText() + " ," + zip.getText(), Toast.LENGTH_LONG).show();
+			}
+        	      	
+        });
+        
+        clear = (Button) findViewById(R.id.clearbutton);
+        
+        clear.setOnClickListener(new OnClickListener(){
+			public void onClick(View arg0) {
+				setInput();
+				resetInput();
+			}
+        	      	
+        });
+        
+
+    }
+
+    //Method to set local variables by findViewById
+    public void setInput(){
+		fname = (EditText) findViewById(R.id.fname);
+		address = (EditText) findViewById(R.id.address);
+		city = (EditText) findViewById(R.id.city);
+		state = (EditText) findViewById(R.id.state);
+		zip = (EditText) findViewById(R.id.zip);
+    }
+    
+    //Method to reset EditText Input Fields
+    public void resetInput(){
+		fname.setText("First Name");
+		address.setText("Address");
+		city.setText("City");
+		state.setText("State");
+		zip.setText("Zip");
+    }
+    
+    
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_main, menu);
+        return true;
+    }
+    
+
+    
+}
