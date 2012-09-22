@@ -42,6 +42,7 @@ public class Address_Book extends Activity {
 	private EditText city = null;
 	private EditText state = null;
 	private EditText zip = null;
+	private WriteFile writeToFile = new WriteFile();
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -77,6 +78,7 @@ public class Address_Book extends Activity {
 		city = (EditText) findViewById(R.id.city);
 		state = (EditText) findViewById(R.id.state);
 		zip = (EditText) findViewById(R.id.zip);
+		writeToFile.writeFields();
     }
     
     //Method to reset EditText Input Fields
